@@ -19,3 +19,9 @@ ID: Number, City: Varchar, State: Varchar, LAT_N:NUMBER ,LONG_W:NUMBER
 where LAT_N is the northern latitude and LONG_W is the western longitude. */
 SELECT DISTINCT(CITY) FROM STATION WHERE CITY NOT REGEXP '^[AEIOU].*[AEIOU]$'
 /* A similar type of solution to the above question, but here they ask for no repetition.*/
+
+/* Q. Query the names of all the Japanese cities in the CITY table. The COUNTRYCODE for Japan is JPN. The CITY table is described as follows:
+ID: NUMBER, NAME: VARCHAR, COUNTRYCODE: VARCHAR, DISTRICT: VARCHAR, POPULATION: NUMBER
+ */
+SELECT NAME FROM CITY WHERE COUNTRYCODE='JPN';
+
