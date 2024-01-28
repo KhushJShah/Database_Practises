@@ -44,3 +44,22 @@ Only Ashley, Julia, and Belvet have Marks > . If you look at the last three char
 */
 SELECT NAME FROM STUDENTS WHERE MARKS > 75 ORDER BY RIGHT(NAME,3),ID ASC
 
+/*
+Q. A median is defined as a number separating the higher half of a data set from the lower half. Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to  decimal places.
+
+Input Format
+
+The STATION table is described as follows:
+ID: Number, City: Varchar, State: Varchar, LAT_N:NUMBER ,LONG_W:NUMBER
+
+where LAT_N is the northern latitude and LONG_W is the western longitude
+*/
+SELECT ROUND(lat_n, 4)
+FROM (
+    SELECT lat_n, ROW_NUMBER() OVER() row_num
+    FROM STATION
+    ORDER BY lat_n
+) ordered
+WHERE row_num = ROUND(0.5 * (SELECT COUNT(*) FROM STATION))
+
+/* To calculate the median, the column LAT_N is ordered in ascending way.*/
