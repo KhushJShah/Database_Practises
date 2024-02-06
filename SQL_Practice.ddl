@@ -171,3 +171,16 @@ In company C2, the only lead manager is LM2. There is one senior manager, SM3, u
 
 */
 select distinct c.company_code as company_code, c.founder as founder, count(distinct(l.lead_manager_code)) as total_lead_manager, count(distinct(s.senior_manager_code)) as total_senior_manager, count(distinct(m.manager_code)) as total_manager, count(distinct(e.employee_code)) as total_employee from company as c left join lead_manager as l on c.company_code=l.company_code left join senior_manager as s on l.lead_manager_code= s.lead_manager_code left join manager as m on s.senior_manager_code = m.senior_manager_code left join employee as e on m.manager_code = e.manager_code group by company_code, founder order by company_code asc;
+
+/*
+Q. Consider  and  to be two points on a 2D plane where  are the respective minimum and maximum values of Northern Latitude (LAT_N) and  are the respective minimum and maximum values of Western Longitude (LONG_W) in STATION.
+
+Query the Euclidean Distance between points  and  and format your answer to display  decimal digits.
+
+Input Format
+
+The STATION table is described as follows:
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+*/
+select round(sqrt(power(max(LAT_N)-min(LAT_N),2)+ power(max(LONG_W)-min(LONG_W),2)),4) from station;
