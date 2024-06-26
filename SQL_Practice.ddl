@@ -212,3 +212,9 @@ Sample Output
 */
 SELECT N, CASE WHEN P IS NULL THEN 'Root' WHEN N IN (SELECT P FROM BST) THEN 'Inner' ELSE 'Leaf' END AS 'RESULT' FROM BST
 ORDER BY N;
+
+/*
+Write a query that prints a list of employee names (i.e.: the name attribute) from the Employee table in alphabetical order.
+
+*/
+SELECT name FROM Employee ORDER BY name ASC;
