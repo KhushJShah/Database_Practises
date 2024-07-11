@@ -250,3 +250,20 @@ where p.IS_EVIL = 0
                 )
 
 order by w.POWER desc, p.AGE desc;
+
+/* 
+Write a query identifying the type of each record in the TRIANGLES table using its three side lengths. Output one of the following statements for each record in the table:
+
+Equilateral: It's a triangle with  sides of equal length.
+Isosceles: It's a triangle with  sides of equal length.
+Scalene: It's a triangle with  sides of differing lengths.
+Not A Triangle: The given values of A, B, and C don't form a triangle.
+*/
+SELECT 
+ CASE 
+ WHEN T.A=T.B AND T.B=T.C THEN 'Equilateral'
+ WHEN T.A=T.B OR T.B=T.C OR T.A=T.C THEN 'Isosceles'
+ WHEN T.A + T.B <= T.C OR T.A + T.C <= T.B THEN 'Not A Triangle'
+ELSE 'SCALENE'
+END AS RESULT
+FROM TRIANGLES AS T;
